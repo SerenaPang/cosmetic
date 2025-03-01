@@ -21,7 +21,7 @@ public class SearchCosmeticsWebService {
 	@GetMapping("/searchByQuery")
 	public ResponseEntity<List<Cosmetic>> searchByQuery(
 			@RequestParam(value = "query", defaultValue = "nothing") String query) {
-		System.out.println("SearchProductsWebservice.searchByQuery() " + query);
+		System.out.println("SearchCosmeticsWebservice.searchByQuery() " + query);
 		List<Cosmetic> cosmetics = cosmeticService.searchBySearchString(query);
 
 		return ResponseEntity.status(HttpStatus.OK).body(cosmetics);

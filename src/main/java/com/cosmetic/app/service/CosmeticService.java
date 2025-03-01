@@ -14,7 +14,7 @@ public class CosmeticService {
 	CosmeticRepository cosmeticRepository;
 
 	public List<Cosmetic> searchBySearchString(String searchString) {
-		System.out.println("ProductsService.searchBySearchString() " + searchString);
+		System.out.println("CosmeticService.searchBySearchString() " + searchString);
 
 		return cosmeticRepository.findBySearchString(searchString);
 	}
