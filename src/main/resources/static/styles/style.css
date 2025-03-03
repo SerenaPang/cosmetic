@@ -4,7 +4,7 @@ body {
 /* Navigation Bar */
 
 #home {
-  background-color: #7600bc;
+  background-color: #c27ba0;
   padding-bottom: 1cm;
   margin-left: -1cm;
   margin-right: -1cm;
@@ -16,7 +16,7 @@ body {
 
 
 .topmenu {
-  color: #7600bc;
+  color: #c27ba0;
   margin: 10px;
   font-size: 20px;
   text-decoration: none;
@@ -51,3 +51,53 @@ body {
   margin-right: 10px;
   float: left;
 }
+
+/* Search bar */
+
+#search_bar {
+  width: 200px;
+}
+/* Used in the about_kityzon sections */
+
+.container {
+  display: flex;
+}
+
+/* about_kityzon */
+
+.about_kityzon {
+  display: flex;
+  align-items: center;
+}
+
+#about_kityzon h1 {
+  font-size: 65px;
+  color: #7600bc;
+}
+
+#about_kityzon p {
+  font-size: 25px;
+  color: rgb(128, 128, 128);
+}
+
+.profile_image {
+  height: fit-content;
+  vertical-align: middle;
+  margin: 5px;
+}
+
+/* Cart */
+#cart {
+  float: right;
+  border: 2px solid #a64d79;
+  background-color: #f3f6f4;
+  display: block;
+  width: 350px;
+  height: 300px;
+  border-radius: 25px;
+  margin-right: 20px;
+}
+
+
+
+
