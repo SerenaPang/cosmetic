@@ -57,25 +57,25 @@ body {
 #search_bar {
   width: 200px;
 }
-/* Used in the about_kityzon sections */
+/* Used in the about_kityphora sections */
 
 .container {
   display: flex;
 }
 
-/* about_kityzon */
+/* about_kityphora */
 
-.about_kityzon {
+.about_kityphora {
   display: flex;
   align-items: center;
 }
 
-#about_kityzon h1 {
+#about_kityphora h1 {
   font-size: 65px;
-  color: #7600bc;
+  color: #c27ba0;
 }
 
-#about_kityzon p {
+#about_kityphora p {
   font-size: 25px;
   color: rgb(128, 128, 128);
 }
