@@ -25,6 +25,6 @@ public class CosmeticRepositoryImpl implements CosmeticRepository {
 			cosmetic.setPrice(new BigDecimal(24.66));
 			cosmetics.add(cosmetic);
 		}
-		return null;
+		return cosmetics;
 	}
 }

@@ -23,7 +23,7 @@ public class SearchCosmeticsWebService {
 			@RequestParam(value = "query", defaultValue = "nothing") String query) {
 		System.out.println("SearchCosmeticsWebservice.searchByQuery() " + query);
 		List<Cosmetic> cosmetics = cosmeticService.searchBySearchString(query);
-
+		System.out.println("cosmetics " + cosmetics);
 		return ResponseEntity.status(HttpStatus.OK).body(cosmetics);
 	}
 }

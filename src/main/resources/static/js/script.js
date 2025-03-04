@@ -1,3 +1,4 @@
+
 function searchCosmetic(){
 	let cosmeticName = document.getElementById("search_bar").value;
 	
@@ -6,27 +7,40 @@ function searchCosmetic(){
 		alert("Please write a comsetic product name");
 		return;
 	}
-	searchCosmeticProductAjaxCall(cosmeticName);
+	searchCosmeticAjaxCall(cosmeticName);
 }
 
-function searchCosmeticProductAjaxCall(cosmeticName){
-	let url = "/searchByQuery?query=" + cosmeticName;
-	fetch(url)
-		.then((response) => {
-			//throws an error if the request did not succeed
-			if (!response.ok) {
-				throw new Error('HTTP error: ${response.status}');
-			}
-			//immediately returns the promise if the response succeeded
-			return response.text();
-		})
-		.then((text)) => {
-			const cosmetics = JSON.parse(text);
-			renderCosmetics(cosmetics);
-		})
-		.catch((error)) => {
-			alert('Could not fetch cosmetic products: ${error}');
-		});
+function searchCosmeticAjaxCall(cosmeticName){
+	// Webservice URL to search for products.
+	  let url = "/searchByQuery?query=" + cosmeticName;
+
+	  // https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests
+	  // Call `fetch()`, passing in the URL.
+	  fetch(url)
+	      // fetch() returns a promise. When we have received a response from the server,
+	      // the promise's `then()` handler is called with the response.
+	      .then((response) => {
+	          // Our handler throws an error if the request did not succeed.
+	          if (!response.ok) {
+	              throw new Error(`HTTP error: ${response.status}`);
+	          }
+	          // Otherwise (if the response succeeded), our handler fetches the response
+	          // as text by calling response.text(), and immediately returns the promise
+	          // returned by `response.text()`.
+	          return response.text();
+	      })
+	      // When response.text() has succeeded, the `then()` handler is called with
+	      // the text, and we copy it into the `poemDisplay` box.
+	      .then((text) => {
+	          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+	          const cosmetics = JSON.parse(text);
+	          renderCosmetics(cosmetics);
+	      })
+	      // Catch any errors that might happen, and display a message
+	      // in the `poemDisplay` box.
+	      .catch((error) => {
+	          alert(`Could not fetch cosmetics: ${error}`);
+	      });
 }
 
 function renderCosmetics(cosmetics){
@@ -48,8 +62,8 @@ function renderCosmetics(cosmetics){
 	   tbl.appendChild(firstRow);
 
 	   // creating all cells
-	   for (let i = 0; i < products.length; i++) {
-	       let product = products[i];
+	   for (let i = 0; i < cosmetics.length; i++) {
+	       let cosmetic = cosmetics[i];
 	       // creates a table row
 	       const row = document.createElement("tr");
 
@@ -64,6 +78,17 @@ function renderCosmetics(cosmetics){
 	   }
 	   // appends <table> into <body>
 	   resultsDiv.appendChild(tbl);
+}
+
+function insertAddToCartButton(row, cosmeticId) {
+    let button = document.createElement("input");
+    button.type = "button";
+    button.value = "Add to cart";
+    button.onclick = function () {
+        // TODO: Call webservice and add cosmetic.
+        alert("Add to cart " + cosmeticId);
+    };
+    row.appendChild(button);
 }
 
 function insertTableHeader(row, text) {
