@@ -65,6 +65,7 @@ function renderCosmetics(cosmetics){
 	   insertTableHeader(firstRow, "Description");
 	   insertTableHeader(firstRow, "Brand");
 	   insertTableHeader(firstRow, "Price");
+	   insertTableHeader(firstRow, "Quantity");
 	   insertTableHeader(firstRow, "Order");
 	   tbl.appendChild(firstRow);
 
@@ -78,6 +79,7 @@ function renderCosmetics(cosmetics){
 	       insertTableData(row, cosmetic.description);
 	       insertTableData(row, cosmetic.brand);
 	       insertTableData(row, cosmetic.price);
+	       insertQuantityText(row, cosmetic.id);
 	       insertAddToCartButton(row, cosmetic.id);
 
 	       // add the row to the end of the table body
@@ -87,6 +89,19 @@ function renderCosmetics(cosmetics){
 	   resultsDiv.appendChild(tbl);
 }
 
+function insertQuantityText(row, cosmeticId){
+	//<input id="quantity_id" type="text" value="1">
+	let text = document.createElement("input");
+	text.type = "text";
+	text.value = "1";
+	text.id = "quantity_" + cosmeticId;
+
+	let cell = document.createElement("td");
+	cell.appendChild(text);
+	row.appendChild(cell);
+}
+
+//<input type="button" value="Add to cart">
 function insertAddToCartButton(row, cosmeticId) {
     let button = document.createElement("input");
     button.type = "button";
@@ -94,7 +109,10 @@ function insertAddToCartButton(row, cosmeticId) {
 	button.onclick = function () {
 	       addCosmetictToCart(cosmeticId)
 	};
-	row.appendChild(button);
+
+	let cell = document.createElement("td");
+	cell.appendChild(button);
+	row.appendChild(cell);
 }
 
 function insertTableHeader(row, text) {
