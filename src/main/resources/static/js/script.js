@@ -138,7 +138,11 @@ function addCosmetictToCart(cosmeticId) {
             break;
         }
     }
-  
+
+	let quantityText = document.getElementById("quantity_" + cosmeticId);
+	//console.info(element.value);
+
+	cosmetic.quantity = quantityText.value;
     cart.push(cosmetic);
     renderCart();
 }
@@ -169,7 +173,7 @@ function renderCart() {
         insertTableData(row, cosmetic.name);
         insertTableData(row, cosmetic.price);
         // TODO: Get the quantity from input box
-        insertTableData(row, 1);
+        insertTableData(row, cosmetic.quantity);
 
         // TODO: Add remove button.
 
