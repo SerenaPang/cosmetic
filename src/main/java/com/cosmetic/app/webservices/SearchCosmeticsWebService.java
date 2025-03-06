@@ -26,4 +26,6 @@ public class SearchCosmeticsWebService {
 		System.out.println("cosmetics " + cosmetics);
 		return ResponseEntity.status(HttpStatus.OK).body(cosmetics);
 	}
+	
+	
 }

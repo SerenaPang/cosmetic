@@ -1,3 +1,9 @@
+/* List of cosmetics in the cart. */
+let cart = [];
+
+/* List of cosmetics returned by the search query. */
+let currentCosmetics = [];
+
 
 function searchCosmetic(){
 	let cosmeticName = document.getElementById("search_bar").value;
@@ -34,6 +40,7 @@ function searchCosmeticAjaxCall(cosmeticName){
 	      .then((text) => {
 	          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
 	          const cosmetics = JSON.parse(text);
+			  currentCosmetics = cosmetics;
 	          renderCosmetics(cosmetics);
 	      })
 	      // Catch any errors that might happen, and display a message
@@ -67,10 +74,10 @@ function renderCosmetics(cosmetics){
 	       // creates a table row
 	       const row = document.createElement("tr");
 
-	       insertTableField(row, cosmetic.name);
-	       insertTableField(row, cosmetic.description);
-	       insertTableField(row, cosmetic.brand);
-	       insertTableField(row, cosmetic.price);
+	       insertTableData(row, cosmetic.name);
+	       insertTableData(row, cosmetic.description);
+	       insertTableData(row, cosmetic.brand);
+	       insertTableData(row, cosmetic.price);
 	       insertAddToCartButton(row, cosmetic.id);
 
 	       // add the row to the end of the table body
@@ -84,11 +91,10 @@ function insertAddToCartButton(row, cosmeticId) {
     let button = document.createElement("input");
     button.type = "button";
     button.value = "Add to cart";
-    button.onclick = function () {
-        // TODO: Call webservice and add cosmetic.
-        alert("Add to cart " + cosmeticId);
-    };
-    row.appendChild(button);
+	button.onclick = function () {
+	       addCosmetictToCart(cosmeticId)
+	};
+	row.appendChild(button);
 }
 
 function insertTableHeader(row, text) {
@@ -98,13 +104,62 @@ function insertTableHeader(row, text) {
     row.appendChild(cell);
 }
 
-function insertTableField(row, text) {
+function insertTableData(row, text) {
     let cell = document.createElement("td");
     let cellText = document.createTextNode(text);
     cell.appendChild(cellText);
     row.appendChild(cell);
 }
 
+function addCosmetictToCart(cosmeticId) {
+    let cosmetic;
 
+    for (let i = 0; i < currentCosmetics.length ; i++) {
+        if (cosmeticId == currentCosmetics[i].id) {
+            cosmetic = currentCosmetics[i];
+            break;
+        }
+    }
+  
+    cart.push(cosmetic);
+    renderCart();
+}
+
+/* Renders the content of the cart */
+function renderCart() {
+    // creates a <table> element.
+    const tbl = document.createElement("table");
+    const myCartDiv = document.getElementById("mycart");
+
+    // Remove Previous elements in the div with id "mycart".
+    while (myCartDiv.firstChild) {
+        myCartDiv.removeChild(myCartDiv.firstChild);
+    }
+
+    const firstRow = document.createElement("tr");
+    insertTableHeader(firstRow, "Name");
+    insertTableHeader(firstRow, "Price");
+    insertTableHeader(firstRow, "Quantity");
+    tbl.appendChild(firstRow);
+
+    // creating the table data
+    for (let i = 0; i < cart.length; i++) {
+        let cosmetic = cart[i];
+        // creates a table row
+        const row = document.createElement("tr");
+
+        insertTableData(row, cosmetic.name);
+        insertTableData(row, cosmetic.price);
+        // TODO: Get the quantity from input box
+        insertTableData(row, 1);
+
+        // TODO: Add remove button.
+
+        // add the row to the end of the table.
+        tbl.appendChild(row);
+    }
+    // appends <table> into <body>
+    myCartDiv.appendChild(tbl);
+}
 
 
