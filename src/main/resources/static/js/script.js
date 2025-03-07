@@ -89,6 +89,36 @@ function renderCosmetics(cosmetics){
 	   resultsDiv.appendChild(tbl);
 }
 
+//<input type="button" value="Remove From Cart">
+function insertRemoveFromCartButton(row, cosmeticId) {
+    let button = document.createElement("input");
+    button.type = "button";
+    button.value = "Remove from cart";
+	button.onclick = function () {
+	       removeCosmetictFromCart(cosmeticId)
+	};
+
+	let cell = document.createElement("td");
+	cell.appendChild(button);
+	row.appendChild(cell);
+}
+
+function removeCosmetictFromCart(cosmeticId) {
+    // Index to remove from cart array
+	let index;
+
+    for (let i = 0; i < cart.length ; i++) {
+        if (cosmeticId == cart[i].id) {
+			index = i;
+            break;
+        }
+    }
+
+	// Remove from cart one element starting from index.
+	cart.splice(index, 1);
+    renderCart();
+}
+
 function insertQuantityText(row, cosmeticId){
 	//<input id="quantity_id" type="text" value="1">
 	let text = document.createElement("input");
@@ -172,11 +202,10 @@ function renderCart() {
 
         insertTableData(row, cosmetic.name);
         insertTableData(row, cosmetic.price);
-        // TODO: Get the quantity from input box
         insertTableData(row, cosmetic.quantity);
 
         // TODO: Add remove button.
-
+		insertRemoveFromCartButton(row, cosmetic.id);
         // add the row to the end of the table.
         tbl.appendChild(row);
     }
