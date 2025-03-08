@@ -113,7 +113,6 @@ function removeCosmetictFromCart(cosmeticId) {
             break;
         }
     }
-
 	// Remove from cart one element starting from index.
 	cart.splice(index, 1);
     renderCart();
@@ -143,6 +142,24 @@ function insertAddToCartButton(row, cosmeticId) {
 	let cell = document.createElement("td");
 	cell.appendChild(button);
 	row.appendChild(cell);
+}
+
+//<input type="button" value="Submit Order">
+function insertSubmitOrderButton() {
+    let button = document.createElement("input");
+    button.type = "button";
+    button.value = "Submit Order";
+	button.onclick = function () {
+	       submitOrder(orderId)
+	};
+	let cell = document.createElement("td");
+	cell.appendChild(button);
+	row.appendChild(cell);
+}
+
+function submitOrder(orderId){
+	let order;
+	
 }
 
 function insertTableHeader(row, text) {
@@ -209,8 +226,15 @@ function renderCart() {
         // add the row to the end of the table.
         tbl.appendChild(row);
     }
+	
     // appends <table> into <body>
     myCartDiv.appendChild(tbl);
+	
+	//add order button
+	let submitOrderButton = document.createElement("input");
+	submitOrderButton.type = "button";
+	submitOrderButton.value = "Submit Order";
+	myCartDiv.appendChild(submitOrderButton);
 }
 
 

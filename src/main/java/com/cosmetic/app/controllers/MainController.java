@@ -10,5 +10,9 @@ public class MainController {
 	    public String home() {
 	        return "home.html";
 	    }
-
+	 
+	 @GetMapping("/order")
+	    public String order() {
+	        return "order.html";
+	    }
 }

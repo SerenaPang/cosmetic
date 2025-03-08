@@ -16,6 +16,8 @@ ps -fea | grep java
 kill the process:
 kill -9 22317
 
+ps -fea | grep spring-boot | grep RELEASE | cut -d' ' -f 4 | xargs kill -9
+
 
 #How to go to the home page
 
