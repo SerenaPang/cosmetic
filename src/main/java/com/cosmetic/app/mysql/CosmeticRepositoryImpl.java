@@ -27,11 +27,4 @@ public class CosmeticRepositoryImpl implements CosmeticRepository {
 		}
 		return cosmetics;
 	}
-
-	@Override
-	public List<Cosmetic> addToCart(List<Cosmetic> cart, Cosmetic cosmetic) {
-		List<Cosmetic> userCart = cart;
-		cart.add(cosmetic);
-		return userCart;
-	}
 }
