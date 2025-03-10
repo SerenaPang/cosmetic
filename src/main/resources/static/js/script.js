@@ -144,20 +144,21 @@ function insertAddToCartButton(row, cosmeticId) {
 	row.appendChild(cell);
 }
 
-//<input type="button" value="Submit Order">
-function insertSubmitOrderButton() {
-    let button = document.createElement("input");
-    button.type = "button";
-    button.value = "Submit Order";
-	button.onclick = function () {
-	       submitOrder(orderId)
+//<input type="button" value="Check Out">
+function insertCheckOutButton(myCartDiv) {
+	//add submit order button
+	let checkOutButton = document.createElement("input");
+	checkOutButton.type = "button";
+	checkOutButton.value = "Check Out";
+
+	checkOutButton.onclick = function () {
+	       checkOut()	;
+		   window.location.href = "./order";
 	};
-	let cell = document.createElement("td");
-	cell.appendChild(button);
-	row.appendChild(cell);
+	myCartDiv.appendChild(checkOutButton);
 }
 
-function submitOrder(orderId){
+function checkOut(){
 	let order;
 	
 }
@@ -230,11 +231,10 @@ function renderCart() {
     // appends <table> into <body>
     myCartDiv.appendChild(tbl);
 	
-	//add order button
-	let submitOrderButton = document.createElement("input");
-	submitOrderButton.type = "button";
-	submitOrderButton.value = "Submit Order";
-	myCartDiv.appendChild(submitOrderButton);
+	//append check out button
+	//myCartDiv.appendChild(submitOrderButton);
+	
+	insertCheckOutButton(myCartDiv);
 }
 
 
