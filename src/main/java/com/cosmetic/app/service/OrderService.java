@@ -13,17 +13,17 @@ import com.cosmetic.app.model.Cosmetic;
 public class OrderService {
 	List<Cosmetic> order = new ArrayList<Cosmetic>();
 
-	public List<Cosmetic> addToOrder(Cosmetic cosmetic) {
-		order.add(cosmetic);
-		return order;
-	}
-
-	public List<Cosmetic> deleteFromOrder(Cosmetic cosmetic) {
-		order.remove(cosmetic);
-		return order;
-	}
-
-	public List<Cosmetic> findAllCosmetics() {
-		return order;
-	}
+//	public List<Cosmetic> addToOrder(Cosmetic cosmetic) {
+//		order.add(cosmetic);
+//		return order;
+//	}
+//
+//	public List<Cosmetic> deleteFromOrder(Cosmetic cosmetic) {
+//		order.remove(cosmetic);
+//		return order;
+//	}
+//
+//	public List<Cosmetic> findAllCosmetics() {
+//		return order;
+//	}
 }

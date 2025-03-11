@@ -1,5 +1,6 @@
 package com.cosmetic.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,17 @@ import com.cosmetic.app.repository.CosmeticRepository;
 //@ApplicationScope
 @SessionScope
 public class CartService {
-	@Autowired
-	CartRepository cartRepository;
-	
-	public List<Cosmetic> addToCart(List<Cosmetic> cart, Cosmetic cosmetic){
-		System.out.println("CosmeticService.addToCart() " + cosmetic);	
-		return cartRepository.addToCart(cart, cosmetic);
+	private List<Cosmetic> cart = new ArrayList<Cosmetic>();
+
+	public void addToCart(Cosmetic cosmetic) {
+		cart.add(cosmetic);
 	}
-	
+
+	public void deleteFromCart(Cosmetic cosmetic) {
+		cart.remove(cosmetic);
+	}
+
+	public List<Cosmetic> getCart() {
+		return cart;
+	}
 }
