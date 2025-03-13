@@ -136,7 +136,7 @@ function insertAddToCartButton(row, cosmeticId) {
     button.type = "button";
     button.value = "Add to cart";
 	button.onclick = function () {
-	       addCosmetictToCart(cosmeticId)
+	       addCosmetictToCart(cosmeticId);
 	};
 
 	let cell = document.createElement("td");
@@ -152,15 +152,9 @@ function insertCheckOutButton(myCartDiv) {
 	checkOutButton.value = "Check Out";
 
 	checkOutButton.onclick = function () {
-	       checkOut()	;
 		   window.location.href = "./order";
 	};
 	myCartDiv.appendChild(checkOutButton);
-}
-
-function checkOut(){
-	let order;
-	
 }
 
 function insertTableHeader(row, text) {
@@ -188,12 +182,54 @@ function addCosmetictToCart(cosmeticId) {
     }
 
 	let quantityText = document.getElementById("quantity_" + cosmeticId);
-	//console.info(element.value);
 
 	cosmetic.quantity = quantityText.value;
     cart.push(cosmetic);
-    renderCart();
+	
+	addCosmesticToCartAjax(cosmetic);
 }
+
+function addCosmesticToCartAjax(cosmetic) {
+	// Webservice URL to add the cosmetic.
+	   let url = "/addCosmeticToCart";
+
+	   // https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests
+	   // Call `fetch()`, passing in the URL.
+	   fetch(url, {
+		method: 'POST',
+		headers: {
+		    'Content-Type': 'application/json'
+		},
+	    body: JSON.stringify({ "id": cosmetic.id})
+        })
+	       // fetch() returns a promise. When we have received a response from the server,
+	       // the promise's `then()` handler is called with the response.
+	       .then((response) => {
+	           // Our handler throws an error if the request did not succeed.
+	           if (!response.ok) {
+	               throw new Error(`HTTP error: ${response.status}`);
+	           }
+	           // Otherwise (if the response succeeded), our handler fetches the response
+	           // as text by calling response.text(), and immediately returns the promise
+	           // returned by `response.text()`.
+	           return response.text();
+	       })
+	       // When response.text() has succeeded, the `then()` handler is called with
+	       // the text, and we copy it into the `poemDisplay` box.
+	       .then((text) => {
+	           // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+			   console.info("Product added to the cart");
+	           renderCart();
+	       })
+	       // Catch any errors that might happen, and display a message
+	       // in the `poemDisplay` box.
+	       .catch((error) => {
+	           alert(`Could not fetch products: ${error}`);
+	       });
+}
+
+
+
 
 /* Renders the content of the cart */
 function renderCart() {
@@ -230,9 +266,6 @@ function renderCart() {
 	
     // appends <table> into <body>
     myCartDiv.appendChild(tbl);
-	
-	//append check out button
-	//myCartDiv.appendChild(submitOrderButton);
 	
 	insertCheckOutButton(myCartDiv);
 }
