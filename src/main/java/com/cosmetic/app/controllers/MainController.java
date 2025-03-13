@@ -11,8 +11,8 @@ public class MainController {
 	        return "home.html";
 	    }
 	 
-	 @GetMapping("/order")
-	    public String order() {
-	        return "order.html";
-	    }
+//	 @GetMapping("/order")
+//	    public String order() {
+//	        return "order.html";
+//	    }
 }

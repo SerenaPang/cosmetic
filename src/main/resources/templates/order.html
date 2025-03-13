@@ -26,6 +26,19 @@
 		          </div>
 		  </nav>
 
+		  <table>					 
+		  		<table>
+		  			<tr>
+		  			<th>Cosmetic Name</th>
+		  			<th>Cosmetic Price</th>
+		  			<th>Cosmetic Brand</th>
+					</tr>
+		  			<tr th:each="cosmetic: ${cart}" >
+		  					<td th:text="${cosmetic.name}"></td>
+		  					<td th:text="${cosmetic.price}"></td>
+							<td th:text="${cosmetic.brand}"></td>
+		  			 </tr>
+		  	</table>
 
 </body>
 
