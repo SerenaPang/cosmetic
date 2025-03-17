@@ -31,10 +31,19 @@ public class CartWebService {
 		// TODO: Autowire the repository to findById()
 		// add the Cosmetic to the cart
 		// If the cart is not found, return NOT_FOUND
+		
+		long id = cosmetic.getId();
+		System.out.println("Cosmetic Id: " + id);
 		cartService.addToCart(cosmetic);
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
-
+	
+	@PostMapping(path = "/findById", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Void> findById(@RequestBody long id) {
+		System.out.println("OrderService.findById " + id);
+		cartService.findById(id);
+		return ResponseEntity.status(HttpStatus.OK).build();
+	}
 	// curl -X GET "http://localhost:8080/deleteFromCart"
 	@GetMapping("/deleteFromCart")
 	public ResponseEntity<Void> deleteFromCart(Cosmetic cosmetic) {

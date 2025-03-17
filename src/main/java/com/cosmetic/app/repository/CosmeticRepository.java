@@ -7,5 +7,5 @@ import com.cosmetic.app.model.Cosmetic;
 public interface CosmeticRepository {
 	 public List<Cosmetic> findBySearchString(String searchString);
 	 
-	 //public Cosmetic findById(long id);
+	 public Cosmetic findById(long id);
 }

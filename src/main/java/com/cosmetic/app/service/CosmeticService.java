@@ -17,6 +17,9 @@ public class CosmeticService {
 		System.out.println("CosmeticService.searchBySearchString() " + searchString);
 		return cosmeticRepository.findBySearchString(searchString);
 	}
-	
 
+	public Cosmetic findById(long id) {
+		System.out.println("CosmeticService.findById() " + id);
+		return cosmeticRepository.findById(id);
+	}
 }

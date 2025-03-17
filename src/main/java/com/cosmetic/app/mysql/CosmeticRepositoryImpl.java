@@ -14,9 +14,9 @@ public class CosmeticRepositoryImpl implements CosmeticRepository {
 
 	@Override
 	public List<Cosmetic> findBySearchString(String searchString) {
-		 System.out.println("CosmeticRepositoryImpl.findBySearchString() " + searchString);
+		System.out.println("CosmeticRepositoryImpl.findBySearchString() " + searchString);
 		List<Cosmetic> cosmetics = new ArrayList<>();
-		for (int i = 1; i <10; i++) {
+		for (int i = 1; i < 10; i++) {
 			Cosmetic cosmetic = new Cosmetic();
 			cosmetic.setId(i);
 			cosmetic.setName("Blush" + i);
@@ -28,4 +28,27 @@ public class CosmeticRepositoryImpl implements CosmeticRepository {
 		return cosmetics;
 	}
 
+	@Override
+	public Cosmetic findById(long id) {
+		System.out.println("CosmeticRepositoryImpl.findById() " + id);
+		List<Cosmetic> cosmetics = new ArrayList<>();
+		for (int i = 1; i < 10; i++) {
+			Cosmetic cosmetic = new Cosmetic();
+			cosmetic.setId(i);
+			cosmetic.setName("Blush" + i);
+			cosmetic.setBrand("FlowerKnows" + i);
+			cosmetic.setDescription("Powder Blush");
+			cosmetic.setPrice(new BigDecimal(24.66));
+			cosmetics.add(cosmetic);
+		}
+		
+		Cosmetic target = null;
+		//find cosmetic
+		for(int j = 1; j <10; j++) {
+			if(cosmetics.get(j).getId() == id) {
+				target = cosmetics.get(j);
+			} 
+		}	
+		return target;
+	}
 }

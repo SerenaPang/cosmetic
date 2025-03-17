@@ -27,5 +27,13 @@ public class SearchCosmeticsWebService {
 		return ResponseEntity.status(HttpStatus.OK).body(cosmetics);
 	}
 	
-	
+	// curl -X GET "http://localhost:8080/findById?id=id"
+		@GetMapping("/findById")
+		public ResponseEntity<Cosmetic> findById(
+				@RequestParam(value = "id", defaultValue = "nothing") long id) {
+			System.out.println("SearchCosmeticsWebservice.findById() " + id);
+			Cosmetic cosmetic = cosmeticService.findById(id);
+			System.out.println("cosmetics " + cosmetic);
+			return ResponseEntity.status(HttpStatus.OK).body(cosmetic);
+		}	
 }

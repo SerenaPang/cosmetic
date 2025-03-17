@@ -29,4 +29,15 @@ public class CartService {
 	public List<Cosmetic> getCart() {
 		return cart;
 	}
+	
+	public Cosmetic findById(long id) {
+		Cosmetic target = null;
+		//find cosmetic
+		for(int i = 1; i <cart.size(); i++) {
+			if(cart.get(i).getId() == id) {
+				target = cart.get(i);
+			} 
+		}	
+		return target;
+	}
 }
