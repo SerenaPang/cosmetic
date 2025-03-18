@@ -31,7 +31,6 @@ public class CartWebService {
 		// TODO: Autowire the repository to findById()
 		// add the Cosmetic to the cart
 		// If the cart is not found, return NOT_FOUND
-		
 		long id = cosmetic.getId();
 		System.out.println("Cosmetic Id: " + id);
 		cartService.addToCart(cosmetic);

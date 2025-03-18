@@ -228,9 +228,6 @@ function addCosmesticToCartAjax(cosmetic) {
 	       });
 }
 
-
-
-
 /* Renders the content of the cart */
 function renderCart() {
     // creates a <table> element.
