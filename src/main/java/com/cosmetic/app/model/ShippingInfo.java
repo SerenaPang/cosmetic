@@ -1,6 +1,6 @@
 package com.cosmetic.app.model;
 
-public class ShppingInfo {
+public class ShippingInfo {
 	private String name;
 	private String address;
 	private String zipcode;
