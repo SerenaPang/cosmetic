@@ -30,8 +30,7 @@ public class CartWebService {
 	@PostMapping(path = "/addCosmeticToCart", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> addToCart(@RequestBody Cosmetic cosmetic) {
 		System.out.println("OrderService.addToCart " + cosmetic);
-		
-		
+			
 		// TODO: Autowire the repository to findById()
 		Cosmetic cosme = cosmeticRepository.findById(cosmetic.getId());
 		

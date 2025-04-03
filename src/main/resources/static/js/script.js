@@ -157,6 +157,8 @@ function insertCheckOutButton(myCartDiv) {
 	myCartDiv.appendChild(checkOutButton);
 }
 
+
+
 function insertTableHeader(row, text) {
     let cell = document.createElement("th");
     let cellText = document.createTextNode(text);

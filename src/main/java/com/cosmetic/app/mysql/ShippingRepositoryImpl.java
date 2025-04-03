@@ -11,6 +11,7 @@ public class ShippingRepositoryImpl implements ShippingRepository {
 
 	@Override
 	public void addShippingInfo(ShippingInfo info) {
+		System.out.println("Shipping Info: " + info);
 		shippingInfo.add(info);
 	}
 }

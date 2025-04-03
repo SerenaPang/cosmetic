@@ -4,7 +4,6 @@ public class ShippingInfo {
 	private String name;
 	private String address;
 	private String zipcode;
-	private String cardNumber;
 
 	public String getName() {
 		return name;
@@ -30,17 +29,8 @@ public class ShippingInfo {
 		this.zipcode = zipcode;
 	}
 
-	public String getCardNumber() {
-		return cardNumber;
-	}
-
-	public void setCardNumber(String cardNumber) {
-		this.cardNumber = cardNumber;
-	}
-
 	@Override
 	public String toString() {
-		return "ShppingInfo [name=" + name + ", address=" + address + ", zipcode=" + zipcode + ", cardNumber="
-				+ cardNumber + "]";
+		return "ShppingInfo [name=" + name + ", address=" + address + ", zipcode=" + zipcode + "]";
 	}
 }

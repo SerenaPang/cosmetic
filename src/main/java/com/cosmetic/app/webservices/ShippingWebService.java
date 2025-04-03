@@ -16,8 +16,8 @@ public class ShippingWebService {
 	private ShippingService shippingService;
 	@PostMapping(path = "/addShippingInfo", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> addShippingInfo(@RequestParam String name,  @RequestParam String address, @RequestParam String zipcode, @RequestParam String cardNumber){
-		System.out.println("ShippingService.addShippingInfo " + "name: " + name + " address:" + address + " zipcode: " + zipcode + " cardNumber: " + cardNumber);
-		shippingService.addShippingInfo(name, address, null, cardNumber);
+		System.out.println("ShippingService.addShippingInfo " + "name: " + name + " address:" + address + " zipcode: " + zipcode);
+		shippingService.addShippingInfo(name, address, zipcode);
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 }

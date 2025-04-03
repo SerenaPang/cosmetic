@@ -11,12 +11,11 @@ public class ShippingService {
 	@Autowired
 	ShippingRepository shippingRepository;
 	
-	public void addShippingInfo(String name, String address, String zipcode, String cardNumber) {
+	public void addShippingInfo(String name, String address, String zipcode) {
 		ShippingInfo info = new ShippingInfo();
 		info.setName(name);
 		info.setAddress(address);
 		info.setZipcode(zipcode);
-		info.setCardNumber(cardNumber);
 		shippingRepository.addShippingInfo(info);
 	}
 }
