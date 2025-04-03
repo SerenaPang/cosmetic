@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cosmetic.app.model.Cosmetic;
+import com.cosmetic.app.repository.CosmeticRepository;
 import com.cosmetic.app.service.CartService;
 
 @RestController
 public class CartWebService {
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private CosmeticRepository cosmeticRepository;
 
 	//	curl --header "Content-Type: application/json" \
 	//	  --request POST \
@@ -29,20 +33,20 @@ public class CartWebService {
 		
 		
 		// TODO: Autowire the repository to findById()
+		Cosmetic cosme = cosmeticRepository.findById(cosmetic.getId());
+		
+		if (cosme == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		
 		// add the Cosmetic to the cart
 		// If the cart is not found, return NOT_FOUND
-		long id = cosmetic.getId();
-		System.out.println("Cosmetic Id: " + id);
-		cartService.addToCart(cosmetic);
+
+		System.out.println("Cosmetic FOUND " + cosme);
+		cartService.addToCart(cosme);
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
-	
-	@PostMapping(path = "/findById", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> findById(@RequestBody long id) {
-		System.out.println("OrderService.findById " + id);
-		cartService.findById(id);
-		return ResponseEntity.status(HttpStatus.OK).build();
-	}
+
 	// curl -X GET "http://localhost:8080/deleteFromCart"
 	@GetMapping("/deleteFromCart")
 	public ResponseEntity<Void> deleteFromCart(Cosmetic cosmetic) {
