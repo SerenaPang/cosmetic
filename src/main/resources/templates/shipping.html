@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html>
 
 <head>
@@ -29,25 +30,18 @@
 		  <!DOCTYPE html>
 		  <html>
 		      <body>
-		          <h1>Shipping Information</h1>
-		          <form>    
-		              <fieldset name="Shipping Information"> 
-		                  <label for="name">Name:</label>
-		                  <input type="text" id="name" name="name"><br>
-		                  <label for="address">Address:</label>
-		                  <input type="text" id="address" name="address"><br>
-		                  <label for="zipcode">Zipcode:</label>
-		                  <input type="text" id="zipcode" name="zipcode"><br>
-						  <label for="country">Country:</label>
-						  <input type="text" id="country" name="country"><br>
-						  <label for="city">City:</label>
-						  <input type="text" id="city" name="city"><br>
-						  <label for="phone">Phone:</label>
-						  <input type="text" id="phone" name="phone"><br>
-		              </fieldset>
-		              <br>
-		              <input type="submit" value="Submit">
-		          </form>
+				<form action="/shippingAddress" method="post">
+				     Name: <input type="text" name="name" /><br />
+					 Address: <input type="text" name="address" /><br />
+					 Zipcode:<input type="text" name="zipcode" /><br />
+					 Country:<input type="text" name="country" /><br />
+					 City:<input type="text" name="city" /><br />
+					 Phone:<input type="text" name="phone" /><br />
+				    
+				     <button type="submit">Next</button>
+				  </form>
+				 
+				  <p th:text="${message}"></p>
 		      </body>
 		  </html>
 			<a th:href="@{/home}">home</a>
