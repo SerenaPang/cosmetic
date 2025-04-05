@@ -37,10 +37,8 @@ public class CartWebService {
 		if (cosme == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		
 		// add the Cosmetic to the cart
 		// If the cart is not found, return NOT_FOUND
-
 		System.out.println("Cosmetic FOUND " + cosme);
 		cartService.addToCart(cosme);
 		return ResponseEntity.status(HttpStatus.OK).build();
@@ -61,4 +59,5 @@ public class CartWebService {
 		System.out.println("OrderService.getCart ");
 		return ResponseEntity.status(HttpStatus.OK).body(cosmetics);
 	}
+	
 }
