@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
 import com.cosmetic.app.model.Cosmetic;
+import com.cosmetic.app.model.PaymentInfo;
 import com.cosmetic.app.model.ShippingInfo;
 
 
@@ -33,5 +34,10 @@ public class CartService {
 	public void setShippingInfo(ShippingInfo shippingInfo) {
 		this.shippingInfo = shippingInfo;
 		System.out.println("Shipping info(cart service): " + shippingInfo);
+	}
+
+	public void setPaymentInfo(PaymentInfo paymentInfo) {
+		// TODO Auto-generated method stub
+		
 	}
 }
