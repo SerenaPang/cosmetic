@@ -18,6 +18,7 @@ public class CartService {
 
 	private List<Cosmetic> cart = new ArrayList<Cosmetic>();
 	private ShippingInfo shippingInfo;
+	private PaymentInfo paymentInfo;
 
 	public void addToCart(Cosmetic cosmetic) {
 		cart.add(cosmetic);
@@ -37,7 +38,7 @@ public class CartService {
 	}
 
 	public void setPaymentInfo(PaymentInfo paymentInfo) {
-		// TODO Auto-generated method stub
-		
+		this.paymentInfo = paymentInfo;
+		System.out.println("Payment Info (cart service): " + paymentInfo);
 	}
 }
