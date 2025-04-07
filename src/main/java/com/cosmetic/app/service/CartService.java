@@ -41,4 +41,16 @@ public class CartService {
 		this.paymentInfo = paymentInfo;
 		System.out.println("Payment Info (cart service): " + paymentInfo);
 	}
+
+	public ShippingInfo getShippingInfo() {
+		return shippingInfo;
+	}
+
+	public PaymentInfo getPaymentInfo() {
+		return paymentInfo;
+	}
+
+	public void setCart(List<Cosmetic> cart) {
+		this.cart = cart;
+	}
 }

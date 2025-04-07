@@ -10,11 +10,11 @@ public class PaymentInfo {
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
-	public String getCVC() {
+	public String getCvc() {
 		return cvc;
 	}
-	public void setCVC(String cVC) {
-		cvc = cVC;
+	public void setCvc(String cvc) {
+		this.cvc = cvc;
 	}
 	
 	@Override

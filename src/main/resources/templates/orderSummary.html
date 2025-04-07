@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html>
-	
+<head>
+	<title>Payment information</title>
+</head>
+<body>
 
-	
+		<table>
+		  <tr>
+		    <td>Card Number</td>
+		    <td>CVC</td>
+		  </tr>
+		  <tr>
+		    <td th:text="${paymentInfo.cardNumber}"></td>
+		    <td th:text="${paymentInfo.cvc}"></td>
+		  </tr>
+		</table>
+
+	</body>
 </html>
