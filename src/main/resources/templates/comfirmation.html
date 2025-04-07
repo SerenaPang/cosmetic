@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Order Comfirmation</title>
+</head>
+<body>
+	
+	<table>					 
+		 <table>
+		  	<tr>
+		  	<th>Cosmetic Name</th>
+		  	<th>Cosmetic Price</th>
+		  	<th>Cosmetic Brand</th>
+			</tr>
+		  	<tr th:each="cosmetic: ${cart}" >
+		  		<td th:text="${cosmetic.name}"></td>
+		  		<td th:text="${cosmetic.price}"></td>
+				<td th:text="${cosmetic.brand}"></td>
+		  </tr>
+	</table>
+
+	<table>
+	  <tr>
+	    <td>Card Number</td>
+	    <td>CVC</td>
+	  </tr>
+	  <tr>
+	    <td th:text="${paymentInfo.cardNumber}"></td>
+	    <td th:text="${paymentInfo.cvc}"></td>
+	  </tr>
+	</table>
+	
+	<table>
+		  <tr>
+		    <td>Name </td>
+		    <td>Address </td>
+			<td>Zipcode </td>
+			<td>Country </td>
+			<td>City </td>
+			<td>Phone </td>
+							
+		  </tr>
+		  <tr>
+		    <td th:text="${shippingInfo.name}"></td>
+		    <td th:text="${shippingInfo.address}"></td>
+			<td th:text="${shippingInfo.zipcode}"></td>
+			<td th:text="${shippingInfo.country}"></td>
+			<td th:text="${shippingInfo.city}"></td>
+			<td th:text="${shippingInfo.phone}"></td>
+		  </tr>
+		</table>
+			
+		<a th:href="@{/home}">home</a>
+	
+</body>
+</html>
