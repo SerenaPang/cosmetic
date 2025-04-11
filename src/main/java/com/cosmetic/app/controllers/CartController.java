@@ -22,4 +22,14 @@ public class CartController {
 
 		return "order.html";
 	}
+	
+//	@GetMapping("/demo")
+//	public String viewCart(Model model) {
+//		List<Cosmetic> cart = cartService.getCart();
+//		model.addAttribute("cart", cart);
+//		System.out.println("CART: [ " + cart + " ]");
+//
+//		return "order.html";
+//	}
+	
 }

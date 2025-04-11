@@ -254,7 +254,7 @@ function renderCart() {
         const row = document.createElement("tr");
 
         insertTableData(row, cosmetic.name);
-        insertTableData(row, cosmetic.price);
+        insertTableData(row, cosmetic.price); 
         insertTableData(row, cosmetic.quantity);
 
         // TODO: Add remove button.
@@ -265,8 +265,26 @@ function renderCart() {
 	
     // appends <table> into <body>
     myCartDiv.appendChild(tbl);
+	//let totalPrice = calculateTotalPrice(cart);
+	//let total = document.createElement("totalPrice");
 	
 	insertCheckOutButton(myCartDiv);
 }
+
+function calculateTotalPrice(cart){
+	let totalPrice = 0;
+	for (let i = 0; i < cart.length ; i++) {
+		let cosmetic = cart[i];
+		totalPrice = totalPrice + (cosmetic.price * cosmetic.quantity);
+	  }
+	  return totalPrice;
+}
+
+
+
+
+
+
+
 
 

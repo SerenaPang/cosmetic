@@ -3,8 +3,13 @@
 
 <head>
     <title>Welcom to Kityphora</title>
-    <link rel="stylesheet" href="/styles/style.css" />
-    <script src="/js/script.js"></script>
+	<link rel="stylesheet" href="/styles/style.css" />
+	<style>
+	table, th, td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	}
+	</style>
 </head>
 
 <body>
@@ -25,8 +30,29 @@
 		              </div>
 		          </div>
 		  </nav>
+		  
+		  <p>Total Price:</p>
+		  					<p id="demo"></p>
 
-		  <table>					 
+		  					<script>
+		  					let text = "The total price is " + calculateTotalPrice(cart) + " dollars.";
+		  					document.getElementById("demo").innerHTML = text;
+
+		  					function calculateTotalPrice(cart) {
+		  						let totalPrice = 0;
+		  							for (let i = 0; i < cart.length ; i++) {
+		  								let cosmetic = cart[i];
+		  								totalPrice = totalPrice + (cosmetic.price * cosmetic.quantity);
+		  								 }
+		  								 return totalPrice;
+		  					} 
+		  					</script>
+		  				
+
+		  <div id="cosmeinfo">
+			
+		
+		 <table style="width:100%">				 
 		  		<table>
 		  			<tr>
 		  			<th>Cosmetic Name</th>
@@ -36,9 +62,13 @@
 		  			<tr th:each="cosmetic: ${cart}" >
 		  					<td th:text="${cosmetic.name}"></td>
 		  					<td th:text="${cosmetic.price}"></td>
-							<td th:text="${cosmetic.brand}"></td>
+							<td th:text="${cosmetic.brand}"></td>	
 		  			 </tr>
-		  	</table>		
+		  	</table>	
+		
+			</div>
+			
+			
 			<a th:href="@{/shipping}">Submit</a>
 </body>
 </html>

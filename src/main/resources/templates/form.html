@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <form action="#" th:action="@{/form}" th:object="${paymentInfo}" method="post">
+            <table>
+                <tr>
+                    <td>Card Number:</td>
+                    <td><input type="text" th:field="*{cardNumber}" /></td>
+                    <td th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">Card Number Error</td>
+                </tr>
+                <tr>
+                    <td>cvc:</td>
+                    <td><input type="text" th:field="*{cvc}" /></td>
+                    <td th:if="${#fields.hasErrors('cvc')}" th:errors="*{cvc}">cvc Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
