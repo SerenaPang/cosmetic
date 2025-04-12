@@ -2,9 +2,11 @@ package com.cosmetic.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.cosmetic.app.model.PaymentInfo;
 import com.cosmetic.app.model.ShippingInfo;
 import com.cosmetic.app.service.CartService;
 
@@ -21,10 +23,17 @@ public class ShipmentController {
 	}
 
 	@PostMapping("/shippingAddress")
-	public String ShippingAddress(ShippingInfo shippingInfo) {
+	public String ShippingAddress(ShippingInfo shippingInfo, Model model) {
 		System.out.println("Shipping info: " + shippingInfo);
 		cartService.setShippingInfo(shippingInfo);
-		return "payment.html";
+		
+		PaymentInfo payment = cartService.getPaymentInfo();
+		if (payment == null) {
+			payment = new PaymentInfo();
+		}
+		model.addAttribute("paymentInfo", payment);
+		
+		return "redirect:/paymentInfo";
 	}
 	
 	

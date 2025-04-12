@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html>
-	
+<html xmlns:th="http://www.thymeleaf.org">	
 <head>
     <title>Payment Method</title>
     <link rel="stylesheet" href="/styles/style.css" />
     <script src="/js/script.js"></script>
 </head>
+<body>
+      <form action="#" th:action="@{/paymentInfo}" method="post" th:object="${paymentInfo}">
+          <table>
+              <tr>
+                  <td>Card Number:</td>
+                  <td><input type="text" th:field="*{cardNumber}"/></td>
+				  <td th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">Card Number Error</td>
+              </tr>
 
-	<body>
-	  <form action="/paymentInfo" method="post">
-	     Card Number: <input type="text" name="cardNumber" /><br />
-		 CVC: <input type="text" name="cvc" /><br />
-	     <button type="submit">Submit Payment</button>
-	  </form>
-	 
-	  <p th:text="${message}"></p>
-	</body>
+              <tr>
+                  <td>CVC:</td>
+                  <td><input type="text" th:field="*{cvc}" /></td>
+                  <td th:if="${#fields.hasErrors('cvc')}" th:errors="*{cvc}">cvc Error</td>
+              </tr>
+
+			  
+			   <tr>
+			      <td><button type="submit">Submit Payment</button></td>
+			  </tr>
+          </table>
+      </form>
+  </body>
+  
+	
 </html>

@@ -10,25 +10,24 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.cosmetic.app.model.PaymentInfo;
 
-
-@Controller
-public class WebController implements WebMvcConfigurer {
+//@Controller
+public class PaymentValidationController implements WebMvcConfigurer{
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/results").setViewName("results");
 	}
 
-	@GetMapping("/form")
+	@GetMapping("/paymentInfo")
 	public String showForm(PaymentInfo paymentInfo) {
-		return "form";
+		return "payment";
 	}
 
-	@PostMapping("/form")
+	@PostMapping("/paymentInfo")
 	public String checkPaymentInfo(@Validated PaymentInfo paymentInfo, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
-			return "form";
+			return "payment";
 		}
 
 		return "redirect:/results";

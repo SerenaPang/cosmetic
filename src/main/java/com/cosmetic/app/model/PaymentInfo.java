@@ -1,7 +1,15 @@
 package com.cosmetic.app.model;
 
+import jakarta.annotation.Nonnull;
+import jakarta.validation.constraints.Size;
+
 public class PaymentInfo {
+	@Nonnull
+	@Size(min=2, max=30)
 	private String cardNumber;
+	
+	@Nonnull
+	@Size(min=3, max=4)
 	private String cvc;
 	
 	public String getCardNumber() {
