@@ -26,11 +26,9 @@ public class WebController implements WebMvcConfigurer {
 
 	@PostMapping("/form")
 	public String checkPaymentInfo(@Validated PaymentInfo paymentInfo, BindingResult bindingResult) {
-
 		if (bindingResult.hasErrors()) {
 			return "form";
 		}
-
 		return "redirect:/results";
 	}
 }

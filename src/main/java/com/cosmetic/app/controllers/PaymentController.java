@@ -33,7 +33,6 @@ public class PaymentController implements WebMvcConfigurer{
 			System.out.println("PaymentController.PaymentInfo() ERRORS");
 			return "payment.html";
 		}
-
-		return "redirect:/paymentSummary";
+		return "paymentSummary.html";
 	}
 }
