@@ -1,11 +1,26 @@
 package com.cosmetic.app.model;
 
+import jakarta.annotation.Nonnull;
+import jakarta.validation.constraints.Size;
+
 public class ShippingInfo {
+	@Nonnull
+	@Size(min=1, max=20)
 	private String name;
+	@Nonnull
+	@Size(min=5, max=30)
 	private String address;
+	@Nonnull
+	@Size(min=4, max=5)
 	private String zipcode;
+	@Nonnull
+	@Size(min=3, max=20)
 	private String country;
+	@Nonnull
+	@Size(min=3, max=20)
 	private String city;
+	@Nonnull
+	@Size(min=10, max=11)
 	private String phone;
 
 	public String getName() {
