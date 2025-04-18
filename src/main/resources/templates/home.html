@@ -45,18 +45,7 @@
 			      <h2>Your Cart</h2>
 			      <div id="mycart">
 			          <!-- The search results will be placed here. -->
-			           <h3>Waiting for your cosmetic products</h3>
-					   
-					   <tr th:each="cosmetic: ${mycart}" >
-					   		<td th:text="${cosmetic.name}"></td>
-					   		<td>
-					   		<a 
-					   			th:href="@{'/order?cosmeticId=' + ${mycart.cosmeticId}}">
-					   		</a>
-					   		</td>
-					   		<td th:text="${cosmetic.price}"></td>
-							<td th:text="${cosmetic.brand}"></td>
-					   </tr>
+			           <h3>Cart empty</h3>
 			      </div>
 			</div>
 			

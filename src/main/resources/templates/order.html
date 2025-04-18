@@ -30,25 +30,6 @@
 		              </div>
 		          </div>
 		  </nav>
-		  
-		  <p>Total Price:</p>
-		  					<p id="demo"></p>
-
-		  					<script>
-		  					let text = "The total price is " + calculateTotalPrice(cart) + " dollars.";
-		  					document.getElementById("demo").innerHTML = text;
-
-		  					function calculateTotalPrice(cart) {
-		  						let totalPrice = 0;
-		  							for (let i = 0; i < cart.length ; i++) {
-		  								let cosmetic = cart[i];
-		  								totalPrice = totalPrice + (cosmetic.price * cosmetic.quantity);
-		  								 }
-		  								 return totalPrice;
-		  					} 
-		  					</script>
-		  				
-
 		  <div id="cosmeinfo">
 			
 		
@@ -64,6 +45,9 @@
 		  					<td th:text="${cosmetic.price}"></td>
 							<td th:text="${cosmetic.brand}"></td>	
 		  			 </tr>
+					 <tr>
+					 	<td><button type="submit">Next</button></td>
+					 </tr>
 		  	</table>	
 		
 			</div>

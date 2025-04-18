@@ -230,6 +230,15 @@ function addCosmesticToCartAjax(cosmetic) {
 	       });
 }
 
+function calculateTotalPrice(cart){
+	let totalPrice = 0;
+	for (let i = 0; i < cart.length ; i++) {
+		let cosmetic = cart[i];
+		totalPrice = totalPrice + (cosmetic.price * cosmetic.quantity);
+	  }
+	  return totalPrice;
+}
+
 /* Renders the content of the cart */
 function renderCart() {
     // creates a <table> element.
@@ -265,21 +274,37 @@ function renderCart() {
 	
     // appends <table> into <body>
     myCartDiv.appendChild(tbl);
-	//let totalPrice = calculateTotalPrice(cart);
-	//let total = document.createElement("totalPrice");
+	
+	const totalPrice = calculateTotalPrice(cart);
+	console.info("This is the total price" + totalPrice);
+	
+	let totalH2 = document.createElement("h2");
+	let totalTxt = document.createTextNode("Total Price: " + totalPrice);
+	totalH2.appendChild(totalTxt);
+	myCartDiv.appendChild(totalH2);
 	
 	insertCheckOutButton(myCartDiv);
 }
 
-function calculateTotalPrice(cart){
-	let totalPrice = 0;
-	for (let i = 0; i < cart.length ; i++) {
-		let cosmetic = cart[i];
-		totalPrice = totalPrice + (cosmetic.price * cosmetic.quantity);
-	  }
-	  return totalPrice;
-}
+function insertTotalPrice(myCartDiv) {
+	let text = "The total price is " + calculateTotalPrice(cart) + " dollars.";
+	document.getElementById("demo").innerHTML = text;
+							
+	//add total price in the cart
+	//	const newDiv = document.createElement('totalPrice');
 
+		// Add content to the new element
+	//	newDiv.textContent = calculateTotalPrice(cart);
+
+		// Add attributes to the new element
+	//	newDiv.setAttribute('price', 'myCartDiv');
+	//	newDiv.classList.add('total-price');
+
+		// Add the new element to the DOM
+	//	document.body.appendChild(myCartDiv);
+		
+	myCartDiv.appendChild(text);
+}
 
 
 

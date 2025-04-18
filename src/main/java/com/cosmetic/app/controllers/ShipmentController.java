@@ -52,6 +52,8 @@ public class ShipmentController implements WebMvcConfigurer{
 			System.out.println("ShipmentController.ShippingAddress() ERRORS");
 			return "shipping.html";
 		}
-		return "payment.html";
+		
+		
+		return "redirect:/paymentInfo";
 	}
 }
