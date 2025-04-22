@@ -4,12 +4,7 @@
 <head>
     <title>Welcom to Kityphora</title>
 	<link rel="stylesheet" href="/styles/style.css" />
-	<style>
-	table, th, td {
-	  border: 1px solid black;
-	  border-collapse: collapse;
-	}
-	</style>
+	
 </head>
 
 <body>
@@ -30,10 +25,9 @@
 		              </div>
 		          </div>
 		  </nav>
+		  
 		  <div id="cosmeinfo">
-			
-		
-		 <table style="width:50%">				 
+			<h2>Your Order</h2>		 
 		  		<table>
 		  			<tr>
 		  			<th>Cosmetic Name</th>
@@ -45,9 +39,6 @@
 		  					<td th:text="${cosmetic.price}"></td>
 							<td th:text="${cosmetic.brand}"></td>	
 		  			 </tr>
-					 <tr>
-					 	<td><button type="submit">Next</button></td>
-					 </tr>
 		  	</table>	
 		
 			</div>

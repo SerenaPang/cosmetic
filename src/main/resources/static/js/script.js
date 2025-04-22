@@ -286,26 +286,6 @@ function renderCart() {
 	insertCheckOutButton(myCartDiv);
 }
 
-function insertTotalPrice(myCartDiv) {
-	let text = "The total price is " + calculateTotalPrice(cart) + " dollars.";
-	document.getElementById("demo").innerHTML = text;
-							
-	//add total price in the cart
-	//	const newDiv = document.createElement('totalPrice');
-
-		// Add content to the new element
-	//	newDiv.textContent = calculateTotalPrice(cart);
-
-		// Add attributes to the new element
-	//	newDiv.setAttribute('price', 'myCartDiv');
-	//	newDiv.classList.add('total-price');
-
-		// Add the new element to the DOM
-	//	document.body.appendChild(myCartDiv);
-		
-	myCartDiv.appendChild(text);
-}
-
 
 
 
