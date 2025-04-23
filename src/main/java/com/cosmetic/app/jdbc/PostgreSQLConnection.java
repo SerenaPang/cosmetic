@@ -1,40 +1,31 @@
 package com.cosmetic.app.jdbc;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class PostgreSQLConnection {
-	public static void main(String[] args) {
 
-		String jdbcUrl = "jdbc:postgresql://localhost:5432/cosmetic";
-		String username = "postgres";
-		String password = "abcd1234.";
+	public PostgreSQLConnection() throws ClassNotFoundException, IOException, SQLException {
+		init();
+	}
 
-		// Register the PostgreSQL driver
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+	private void init() throws IOException, ClassNotFoundException {
 
-		// Connect to the database
+		Class.forName("org.postgresql.Driver");
 
-		Connection connection = null;
-		try {
-			connection = DriverManager.getConnection(jdbcUrl, username, password);
+		try (Connection con = getConnection()) {
 			System.out.println("Connecting to database");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
 
-		// Perform desired database operations
-
-		// Close the connection
-		try {
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public Connection getConnection() throws SQLException {
+		String jdbcUrl = "jdbc:postgresql://localhost:5432/cosmetic";
+		String username = "postgres";
+		String password = "abcd1234.";
+		return DriverManager.getConnection(jdbcUrl, username, password);
 	}
 }
