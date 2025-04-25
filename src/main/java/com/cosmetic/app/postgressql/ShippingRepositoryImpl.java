@@ -1,4 +1,4 @@
-package com.cosmetic.app.mysql;
+package com.cosmetic.app.postgressql;
 
 import java.util.List;
 import org.springframework.stereotype.Repository;

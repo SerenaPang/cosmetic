@@ -5,7 +5,13 @@ import java.util.List;
 import com.cosmetic.app.model.Cosmetic;
 
 public interface CosmeticRepository {
-	 public List<Cosmetic> findBySearchString(String searchString);
-	 
-	 public Cosmetic findById(long id);
+	public List<Cosmetic> findBySearchString(String searchString);
+
+	public Cosmetic findById(long id);
+
+	public Cosmetic saveCosmetic(Cosmetic cosmetic);
+
+	public List<Cosmetic> findAllCosmetics();
+
+	public Cosmetic deleteCosmetic();
 }

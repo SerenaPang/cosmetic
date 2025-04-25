@@ -1,4 +1,4 @@
-package com.cosmetic.app.jdbc;
+package com.cosmetic.app.repository;
 
 import java.io.IOException;
 import java.sql.Connection;

@@ -22,4 +22,16 @@ public class CosmeticService {
 		System.out.println("CosmeticService.findById() " + id);
 		return cosmeticRepository.findById(id);
 	}
+	
+	public Cosmetic saveCosmetic(Cosmetic cosmetic) {
+		return cosmeticRepository.saveCosmetic(cosmetic);
+	}
+
+	public List<Cosmetic> findAllCosmetics() {
+		return cosmeticRepository.findAllCosmetics();
+	}
+
+	public Cosmetic deleteCosmetic() {
+		return cosmeticRepository.deleteCosmetic();
+	}
 }
