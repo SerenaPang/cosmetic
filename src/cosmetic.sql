@@ -23,7 +23,6 @@ INSERT INTO Cosmetic VALUES(8, 'Flush', 'CC Beauty Flush','CC Beauty','6.99');
 
 select * from cosmetic;
 
-
 CREATE TABLE Cart
 (
     cart_id bigint NOT NULL,
@@ -42,7 +41,6 @@ CREATE TABLE OrderInfo
     PRIMARY KEY (order_id),
     FOREIGN KEY(cart_id) REFERENCES Cart(cart_id)
 )
-
 
 CREATE TABLE PaymentInfo
 (

@@ -6,16 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cosmetic.app.model.Cosmetic;
 import com.cosmetic.app.repository.CosmeticRepository;
-import com.cosmetic.app.repository.PostgreSQLConnection;
 
 @Repository
 public class CosmeticRepositoryImpl implements CosmeticRepository {
@@ -40,16 +37,16 @@ public class CosmeticRepositoryImpl implements CosmeticRepository {
 
 	@Override
 	public Cosmetic findById(long id) {
-		System.out.println("jdbc save Cosmetic");
+		System.out.println("jdbc findById");
 		try (Connection connection = dataSource.getConnection()) {
-			String sql = "SELECT id, name, description, brand, price FROM Cosmetic WHERE id =?";
+			String sql = "SELECT cosmetic_id, name, description, brand, price FROM Cosmetic WHERE cosmetic_id =?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setLong(1, id);
 			Cosmetic cosmetic = new Cosmetic();
 
 			try (ResultSet rs = preparedStatement.executeQuery()) {
 				if (rs.next()) {
-					cosmetic.setId(rs.getInt("id"));
+					cosmetic.setId(rs.getInt("cosmetic_id"));
 					cosmetic.setName(rs.getString("name"));
 					cosmetic.setDescription(rs.getString("description"));
 					cosmetic.setBrand(rs.getString("brand"));
@@ -61,6 +58,9 @@ public class CosmeticRepositoryImpl implements CosmeticRepository {
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -86,13 +86,16 @@ public class CosmeticRepositoryImpl implements CosmeticRepository {
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
+		} catch (ClassNotFoundException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
 		}
 		return null;
 	}
 
 	@Override
 	public List<Cosmetic> findAllCosmetics() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
