@@ -17,14 +17,14 @@ public class SearchCosmeticsWebService {
 	@Autowired
 	private CosmeticService cosmeticService;
 
-	// curl -X GET "http://localhost:8080/searchByQuery?query=mycosmetic"
+	// curl -X GET "http://localhost:8080/searchByQuery?query=Lipstick"
 	@GetMapping("/searchByQuery")
-	public ResponseEntity<List<Cosmetic>> searchByQuery(
+	public ResponseEntity<Cosmetic> searchByQuery(
 			@RequestParam(value = "query", defaultValue = "nothing") String query) {
 		System.out.println("SearchCosmeticsWebservice.searchByQuery() " + query);
-		List<Cosmetic> cosmetics = cosmeticService.searchBySearchString(query);
-		System.out.println("cosmetics " + cosmetics);
-		return ResponseEntity.status(HttpStatus.OK).body(cosmetics);
+		Cosmetic cosmetic = cosmeticService.searchBySearchString(query);
+		System.out.println("cosmetics " + cosmetic);
+		return ResponseEntity.status(HttpStatus.OK).body(cosmetic);
 	}
 	
 	// curl -X GET "http://localhost:8080/findById?id=id"

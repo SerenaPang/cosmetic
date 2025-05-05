@@ -1,7 +1,5 @@
 package com.cosmetic.app.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +11,7 @@ public class CosmeticService {
 	@Autowired
 	CosmeticRepository cosmeticRepository;
 
-	public List<Cosmetic> searchBySearchString(String searchString) {
+	public Cosmetic searchBySearchString(String searchString) {
 		System.out.println("CosmeticService.searchBySearchString() " + searchString);
 		return cosmeticRepository.findBySearchString(searchString);
 	}
