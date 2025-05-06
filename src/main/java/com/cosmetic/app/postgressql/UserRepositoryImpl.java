@@ -20,7 +20,7 @@ public class UserRepositoryImpl implements UserRepository{
 	}
 
 	@Override
-	public User findUserById(Integer id) {
+	public User findUserById(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -32,7 +32,7 @@ public class UserRepositoryImpl implements UserRepository{
 	}
 
 	@Override
-	public User deleteUser(Integer idUser) {
+	public User deleteUser(long idUser) {
 		// TODO Auto-generated method stub
 		return null;
 	}
