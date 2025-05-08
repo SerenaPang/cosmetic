@@ -19,10 +19,10 @@ public class SearchCosmeticsWebService {
 
 	// curl -X GET "http://localhost:8080/searchByQuery?query=Lipstick"
 	@GetMapping("/searchByQuery")
-	public ResponseEntity<Cosmetic> searchByQuery(
+	public ResponseEntity<List<Cosmetic>> searchByQuery(
 			@RequestParam(value = "query", defaultValue = "nothing") String query) {
 		System.out.println("SearchCosmeticsWebservice.searchByQuery() " + query);
-		Cosmetic cosmetic = cosmeticService.searchBySearchString(query);
+		List<Cosmetic> cosmetic = cosmeticService.searchBySearchString(query);
 		System.out.println("cosmetics " + cosmetic);
 		return ResponseEntity.status(HttpStatus.OK).body(cosmetic);
 	}

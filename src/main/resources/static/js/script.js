@@ -4,7 +4,6 @@ let cart = [];
 /* List of cosmetics returned by the search query. */
 let currentCosmetics = [];
 
-
 function searchCosmetic(){
 	let cosmeticName = document.getElementById("search_bar").value;
 	
@@ -15,6 +14,7 @@ function searchCosmetic(){
 	}
 	searchCosmeticAjaxCall(cosmeticName);
 }
+
 
 function searchCosmeticAjaxCall(cosmeticName){
 	// Webservice URL to search for products.
@@ -49,6 +49,7 @@ function searchCosmeticAjaxCall(cosmeticName){
 	          alert(`Could not fetch cosmetics: ${error}`);
 	      });
 }
+
 
 function renderCosmetics(cosmetics){
 	// creates a <table> element and a <tbody> element
@@ -285,11 +286,3 @@ function renderCart() {
 	
 	insertCheckOutButton(myCartDiv);
 }
-
-
-
-
-
-
-
-
